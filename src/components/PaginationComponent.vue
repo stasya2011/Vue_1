@@ -18,10 +18,10 @@ button {
 }
 </style>
 
-<script setup>
+<script setup lang="ts">
 defineProps({ totalPages: Number });
 const emit = defineEmits(['update:page']);
-const emitPageUpdate = (page) => {
+const emitPageUpdate = (page: number) => {
   emit('update:page', page);
 };
 </script>

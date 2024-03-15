@@ -1,9 +1,13 @@
-<script setup>
-import { ref, reactive, onUpdated, onMounted } from 'vue';
+<script setup lang="ts">
+import { ref, reactive, onMounted } from 'vue';
 import PaginationComponent from './PaginationComponent.vue';
 
-let list = reactive({ data: null });
-let currentPage = ref(1);
+interface IList {
+  data: { id: number; title: string }[] | null;
+}
+
+let list = reactive<IList>({ data: null });
+let currentPage = ref<number>(1);
 
 const fetchData = async () => {
   const response = await fetch(
@@ -13,17 +17,13 @@ const fetchData = async () => {
   list.data = JSON.parse(JSON.stringify(json));
 };
 
-const handlePageUpdate = (page) => {
+const handlePageUpdate = (page: number) => {
   currentPage.value = page;
   fetchData();
 };
 
 onMounted(() => {
   setTimeout(() => fetchData(), 3000);
-});
-
-onUpdated(() => {
-  console.log('updated');
 });
 </script>
 
