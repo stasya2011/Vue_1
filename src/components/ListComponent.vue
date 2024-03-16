@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref, reactive, onMounted } from 'vue';
+import InputComponent from './InputComponent.vue';
 import PaginationComponent from './PaginationComponent.vue';
+import { ref, reactive, onMounted } from 'vue';
 
 interface IList {
   data: { id: number; title: string }[] | null;
@@ -28,6 +29,8 @@ onMounted(() => {
 </script>
 
 <template>
+  <InputComponent title="Test title" :age="31" />
+  <InputComponent>Children</InputComponent>
   <div>
     <ul v-if="list.data">
       <li v-for="el in list.data" :key="el.id">{{ el.title }}</li>
@@ -35,8 +38,7 @@ onMounted(() => {
     <div v-else>
       <h3>Loading...</h3>
     </div>
-    <div>
-      <PaginationComponent :totalPages="10" @update:page="handlePageUpdate" />
-    </div>
+
+    <PaginationComponent :totalPages="10" @update:page="handlePageUpdate" />
   </div>
 </template>

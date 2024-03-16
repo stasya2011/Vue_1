@@ -11,10 +11,19 @@
 </template>
 
 <style scoped>
+div {
+  display: flex;
+  justify-content: space-between;
+  max-width: 500px;
+  border: 1px solid green;
+  border-right: none;
+}
 button {
   background-color: transparent;
-  border: 2px solid green;
-  border-radius: 15px;
+  border: none;
+  border-right: 2px solid green;
+  text-align: center;
+  width: 100%;
 }
 </style>
 
